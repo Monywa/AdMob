@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AdMob"
         tools:targetApi="31">
         <activity
+            android:name=".InterstitialAdActivity"
+            android:exported="false" />
+        <activity
             android:name=".BannerAdActivity"
             android:exported="false" />
         <activity

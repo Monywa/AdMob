@@ -27,6 +27,10 @@ class BannerAdActivity : AppCompatActivity() {
             Log.d(TAG, "onIntializedCompleted:")
         }
 
+
+
+
+        //For test device
         MobileAds.setRequestConfiguration(
             RequestConfiguration.Builder().setTestDeviceIds(
                 listOf(
@@ -37,9 +41,9 @@ class BannerAdActivity : AppCompatActivity() {
         )
 
         //init banner ad
-
         val adRequest=AdRequest.Builder().build()
         adView.loadAd(adRequest)
+
 
         adView.adListener=object: AdListener() {
             override fun onAdClicked() {
