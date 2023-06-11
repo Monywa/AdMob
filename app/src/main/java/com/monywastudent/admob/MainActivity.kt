@@ -14,6 +14,14 @@ class MainActivity : AppCompatActivity() {
     private val interstitialBtn:Button by lazy{
         findViewById(R.id.interstitial_btn)
     }
+
+    private val rewardInterstitialBtn:Button by lazy{
+        findViewById(R.id.rewardedInterstitial_btn)
+    }
+
+    private val rewardAdBtn:Button by lazy{
+        findViewById(R.id.rewarded_btn)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,6 +36,18 @@ class MainActivity : AppCompatActivity() {
         //navigate to interstitial ad
         interstitialBtn.setOnClickListener {
             val intent=Intent(this,InterstitialAdActivity::class.java)
+            startActivity(intent)
+        }
+
+        //navigate to rewarded interstitial ad
+        rewardInterstitialBtn.setOnClickListener {
+            val intent=Intent(this,RewardedInterstitialActivity::class.java)
+            startActivity(intent)
+        }
+
+        //navigate to rewarded interstitial ad
+        rewardAdBtn.setOnClickListener {
+            val intent=Intent(this,RewardedAdActivity::class.java)
             startActivity(intent)
         }
     }

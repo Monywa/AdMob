@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RewardedAdActivity">
+
+    <!-- Button: Show Rewarded Interstitial Ad (Show loaded Ad) -->
+    <Button
+        android:id="@+id/show_ad_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Rewarded Ad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <!-- Button: Show Rewarded Interstitial Ad (Load and show Ad) -->
+    <Button
+        android:id="@+id/load_and_show_ad_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Load And Show Rewarded Ad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/show_ad_btn"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

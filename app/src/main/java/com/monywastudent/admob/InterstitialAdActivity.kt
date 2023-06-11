@@ -16,15 +16,15 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 class InterstitialAdActivity : AppCompatActivity() {
 
-    private val showInterstitialBtn: Button by lazy{
+    private val showInterstitialBtn: Button by lazy {
         findViewById(R.id.show_interstitial_ad)
     }
 
     companion object {
-        private const val TAG="InterstitialAd"
+        private const val TAG = "InterstitialAd"
     }
 
-    private var mInterstitialAd:InterstitialAd?=null
+    private var mInterstitialAd: InterstitialAd? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,52 +32,61 @@ class InterstitialAdActivity : AppCompatActivity() {
         setContentView(R.layout.activity_interstitial_ad)
 
         //action bar title
-        title="Interstitial Ad"
+        title = "Interstitial Ad"
 
 
         //Initialize mobile ads sdk (e.g. if you want to ad test device id to get test ads)
-        MobileAds.initialize(this) {status->
+        MobileAds.initialize(this) { status ->
             Log.d(TAG, "onCreate status:$status")
         }
 
         //Set your test devices. Check your logcat output for the hashed device id to
         //get test ads on a physical device. e.g
         MobileAds.setRequestConfiguration(
-            RequestConfiguration.Builder().setTestDeviceIds(listOf("TEST_ID_1","TEST_ID_N")).build()
+            RequestConfiguration.Builder()
+                .setTestDeviceIds(listOf("TEST_ID_1", "TEST_ID_N"))
+                .build()
         )
 
-        loadInterstitialAd()
+
 
         showInterstitialBtn.setOnClickListener {
-            showInterstitialAd()
+            loadInterstitialAd()
         }
     }
 
-    private fun loadInterstitialAd(){
+    private fun loadInterstitialAd() {
         //AdRequest to load interstitial Ad
-        val adRequest=AdRequest.Builder().build()
-        InterstitialAd.load(this,resources.getString(R.string.interstitial_ad_id_test),adRequest,object:
-            InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                super.onAdFailedToLoad(adError)
-                Log.d(TAG,"onAdFailedToLoad :$adError")
-                mInterstitialAd=null
-            }
+        val adRequest = AdRequest.Builder().build()
 
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                super.onAdLoaded(interstitialAd)
-                Log.d(TAG,"onAdLoaded :$interstitialAd")
-                mInterstitialAd=interstitialAd
-            }
-        })
+        //load Interstitial ad and if exits , assign value
+        InterstitialAd.load(
+            this,
+            resources.getString(R.string.interstitial_ad_id_test),
+            adRequest,
+            object :
+                InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    super.onAdFailedToLoad(adError)
+                    Log.d(TAG, "onAdFailedToLoad :$adError")
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    super.onAdLoaded(interstitialAd)
+                    Log.d(TAG, "onAdLoaded :$interstitialAd")
+                    mInterstitialAd = interstitialAd
+                    showInterstitialAd()
+                }
+            })
     }
 
-    private fun showInterstitialAd(){
-        if(mInterstitialAd!=null){
-            Log.d(TAG,"showInterstitialAd: Ad was loaded, we can show")
-            mInterstitialAd?.fullScreenContentCallback=object : FullScreenContentCallback() {
+    private fun showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            Log.d(TAG, "showInterstitialAd: Ad was loaded, we can show")
+            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdClicked() {
-                        super.onAdClicked()
+                    super.onAdClicked()
                     // Called when a click is recorded for an ad.
                     Log.d(TAG, "onAdClicked:")
                 }
@@ -88,16 +97,15 @@ class InterstitialAdActivity : AppCompatActivity() {
                     // Called when ad is dismissed.
                     // Don't forget to set the ad reference to null so you don't show the same ad again
                     Log.d(TAG, "onAdDismissedFullScreenContent: ")
-                    mInterstitialAd=null
-                    loadInterstitialAd()
+                    mInterstitialAd = null
                     toast("Ad is closed. here you can perform the task e.g start activity")
                 }
 
                 override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                     super.onAdFailedToShowFullScreenContent(adError)
                     // Called when ad fails to show.
-                    Log.d(TAG, "onAdFailedToShowFullScreenContent: $adError")
-                    mInterstitialAd=null
+                    Log.d(TAG, "onAdFailedToShowFullScreenContent: ${adError.message}")
+                    mInterstitialAd = null
                 }
 
                 override fun onAdImpression() {
@@ -112,14 +120,17 @@ class InterstitialAdActivity : AppCompatActivity() {
                     Log.d(TAG, "onAdShowedFullScreenContent: ")
                 }
             }
+
+            //show ad
             mInterstitialAd?.show(this)
-        }else{
-            Log.d(TAG,"showInterstitialAd: Ad was not loaded , we can't show")
+        } else {
+            //ad was not loaded
+            Log.d(TAG, "showInterstitialAd: Ad was not loaded , we can't show")
             toast("Ad was not loaded. Perform task e.g start activity")
         }
     }
 
-    private fun toast(message:String){
-        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
+    private fun toast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
