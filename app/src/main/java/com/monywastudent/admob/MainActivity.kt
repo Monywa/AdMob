@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     private val rewardAdBtn:Button by lazy{
         findViewById(R.id.rewarded_btn)
     }
+
+    private val nativeAdBtn:Button by lazy{
+        findViewById(R.id.native_ad_btn)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,5 +54,13 @@ class MainActivity : AppCompatActivity() {
             val intent=Intent(this,RewardedAdActivity::class.java)
             startActivity(intent)
         }
+
+        //navigate to native ad
+        nativeAdBtn.setOnClickListener {
+            val intent=Intent(this,NativeAdActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
