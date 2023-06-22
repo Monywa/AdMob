@@ -8,6 +8,7 @@
     <string name="rewarded_interstitial_ad_id_test">ca-app-pub-3940256099942544/5354046379</string>
     <string name="rewarded_ad_id_test">ca-app-pub-3940256099942544/5224354917</string>
     <string name="native_ad_id_test">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="app_open_ad_id_test">ca-app-pub-3940256099942544/3419835294</string>
 
 
     <!-- Live Ids-->

@@ -11,8 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Banner Ad!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/interstitial_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,7 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Interstitial Ad"
+        app:layout_constraintBottom_toTopOf="@+id/rewardedInterstitial_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/banner_btn" />
 
@@ -30,7 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rewarded Interstitial Ad"
+        app:layout_constraintBottom_toTopOf="@+id/rewarded_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/interstitial_btn" />
 
@@ -39,7 +44,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rewarded Ad"
+        app:layout_constraintBottom_toTopOf="@+id/native_ad_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rewardedInterstitial_btn" />
 
@@ -47,9 +54,22 @@
         android:id="@+id/native_ad_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Navtive Ad"
+        android:text="Native Ad"
+        app:layout_constraintBottom_toTopOf="@+id/app_open_ad_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rewarded_btn" />
+
+    <Button
+        android:id="@+id/app_open_ad_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open App Ad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/native_ad_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
